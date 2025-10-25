@@ -18,38 +18,122 @@
                                   -can we hv a bangla keyboard pop up? 
                                   -5K on mobile, go mobile first
 -->
-!DOCTYPE html>.    <!-- start-->
-<html lang="en">. <!-- language set to English-->
-<head> <!-- Lets start-->
-  <meta charset="UTF-8"> <!-- character set-->
-  <title>Banglesh Wordle</title> <!--title-->
-  <style>  
-    body {. 
-      font-family: Arial, sans-serif; 
-      text-align: center; 
-      margin-top: 50px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bangladesh Wordle</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #121213;
+      color: #ffffff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
     }
-    .square {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
-      margin: 2px;
+
+    h1 {
+      font-size: 2em;
+      margin: 20px 0;
+      letter-spacing: 2px;
       font-weight: bold;
-      font-size: 24px;
+    }
+
+    p {
+      color: #d7dadc;
+      font-size: 1em;
+      font-style: italic;
+    }
+
+    #board {
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+      grid-gap: 8px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .square {
+      width: 60px;
+      height: 60px;
+      font-size: 26px;
+      font-weight: bold;
+      border: 2px solid #3a3a3c;
       border-radius: 6px;
       text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: Georgia, serif;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
     }
-    .green { background-color: #6aaa64; color: white; }
-    .yellow { background-color: #c9b458; color: white; }
-    .gray { background-color: #787c7e; color: white; }
+
+    .green { background-color: #6aaa64; border: none; }
+    .yellow { background-color: #c9b458; border: none; }
+    .gray { background-color: #3a3a3c; border: none; }
+
+    input[type="text"] {
+      width: 220px;
+      height: 45px;
+      font-size: 20px;
+      text-transform: uppercase;
+      text-align: center;
+      border: 2px solid #565758;
+      border-radius: 8px;
+      background-color: #121213;
+      color: white;
+      outline: none;
+      margin-top: 20px;
+      font-family: Georgia, serif;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #6aaa64;
+    }
+
+    button {
+      background-color: #6aaa64;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: 0.2s;
+      font-family: Georgia, serif;
+    }
+
+    button:hover {
+      background-color: #538d4e;
+    }
+
+    #message {
+      margin-top: 25px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #d7dadc;
+      font-family: Georgia, serif;
+    }
   </style>
 </head>
 <body>
-  <h1>English Wordle</h1>
+  <h1>Bangladesh Wordle</h1>
   <p>Guess the 5-letter English word! You have 6 tries.</p>
-  <input type="text" id="guessInput" maxlength="5" />
-  <button onclick="sendGuess()">Guess</button>
+
+  <input type="text" id="guessInput" maxlength="5" placeholder="Enter guess" />
+  <button onclick="sendGuess()">Enter</button>
+
   <div id="board"></div>
   <p id="message"></p>
 
@@ -66,39 +150,12 @@
       "moral","light","smile","teach","guide","study","learn","build","brick","walls",
       "doors","porch","chair","table","house","curry","sauce","steam","tamar","chili",
       "cumin","anise","clove","toast","flour","wheat","silks","stich","weave","brush",
-      "brine","shell","coral","shore","glide","flows","flood","peace","dream","grace",
-      "honor","trust","unity","fable","adobe","aloes","amber","angel","apron","armor",
-      "arbor","atlas","award","axial","beach","beads","beast","bench","bison","blaze",
-      "blend","bluff","booth","boots","brine","brown","brush","bucks","bulls","bunny",
-      "bused","cabin","cakes","camel","caper","cedar","charm","chase","chill","choir",
-      "claim","clams","clerk","cloak","clove","coach","coast","coins","colon","coral",
-      "craft","crane","creek","crisp","crown","crude","crush","cumin","curly","curry",
-      "cutie","dalda","dandy","drape","dream","drove","dunes","duvet","dwelling","eagle",
-      "earth","easel","elbow","elder","elope","ember","erase","exult","facet",
-      "fable","faith","fancy","fatal","ferry","feast","fella","fiber","field","fjord",
-      "flora","flush","flute","focus","forge","frond","frost","fruit","gauge","genie",
-      "gleam","globe","glory","grace","grain","grand","grape","graph","grill","grove",
-      "guava","guile","habit","hatch","hazel","heart","hedge","honey","honor","hound",
-      "house","hover","icing","imply","inbox","index","irony","islam","issue",
-      "ivory","jaunt","jelly","joist","judge","juice","jutee","karma","khadi","knack",
-      "knife","knock","kudos","lapse","latch","lemon","linen","lodge","looms","lotus",
-      "lucky","lunch","lunge","magic","mango","manor","maple","marsh","melon","meson",
-      "metal","metric","mixer","moral","mossy","mould","naans","naive","nerve","noble",
-      "noisy","nonce","nylon","ocean","offer","olive","ombre","onion","opera","ozone",
-      "paint","panel","paper","parch","party","peach","peace","pearl","pebble","plant",
-      "plate","plaza","polao","poppy","porch","prime","print","prism","quill","quote",
-      "rains","reach","realm","relay","repel","reply","rhino","river","roast",
-      "robin","rosha","royal","rural","sauce","shade","shahi","shard","share","sheer",
-      "shell","shift","shine","shore","shrub","sieve","sight","skate","skies","slate",
-      "slush","smile","snack","snake","snowy","spice","spoon","spout","stack","stamp",
-      "stand","stark","steak","steam","steel","stick","still","stock","stone","stork",
-      "story","stove","stray","strip","study","stump","style","sugar","sweet","swirl",
-      "table","taint","tamar","tango","taste","teach","tease","tempo","theme","thick",
-      "thief","thine","thorn","those","throw","thumb","tidal","tiger","tides","tikka",
-      "tilak","toast","towel","track","trade","trail","tramp","train","traps","trash",
-      "trend","trial","tribe","trick","tripe","trite","tulip","tuned","unity","urban",
-      "usurp","valve","venue","verse","viola","voice","woven","wrack","wrath","wrist",
-      "yacht","yards","yeast","yield","zebra","zesty","zonal"
+      "brine","shell","coral","shore","flows","peace","dream","grace","honor","trust",
+      "unity","fable","adobe","amber","atlas","award","beach","bench","camel","cedar",
+      "choir","claim","coach","craft","crane","creek","faith","feast","field","flora",
+      "fruit","grape","grain","house","knife","linen","looms","mango","melon","moral",
+      "olive","paint","pearl","plant","plate","river","shore","spice","story","study",
+      "sugar","sweet","table","taste","teach","tides","tikka","toast","trade","woven"
     ];
 
     const TARGET = WORDS[Math.floor(Math.random() * WORDS.length)];
@@ -138,9 +195,10 @@
       let colors = evaluateGuess(guess, TARGET);
       let board = document.getElementById("board");
       let row = document.createElement("div");
+      row.classList.add("row");
 
       for (let i = 0; i < 5; i++) {
-        let sq = document.createElement("span");
+        let sq = document.createElement("div");
         sq.className = "square " + colors[i];
         sq.innerText = guess[i];
         row.appendChild(sq);
@@ -152,10 +210,13 @@
 
       if (guess === TARGET) {
         document.getElementById("message").innerText = "🎉 You guessed it!";
+        input.disabled = true;
       } else if (attempts >= MAX_GUESSES) {
         document.getElementById("message").innerText = `❌ Out of guesses. The word was: ${TARGET}`;
+        input.disabled = true;
       }
     }
   </script>
 </body>
 </html>
+
