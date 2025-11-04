@@ -8,12 +8,7 @@
 -End of day friday
 - display the actual rows, tough to know the guesses
 -have it match the website 
--have the enter field match eveything else that was built, early 200s feel at the moment
--make the words:
-                -start with bangla wordle with bangla letters, bangelish
-                -hardest thing first which is the bangla verision 
-                -WHOLE THING IN BANGLA
-                -textbook language
+                
                                   -how do we add in bangla letters?
                                   -can we hv a bangla keyboard pop up?-done 
                                   -5K on mobile, go mobile first
@@ -218,7 +213,6 @@
   <p id="message"></p>
 
   <script>
-    // 🌾 Bangla transliterated 5-letter word list (with English meanings)
     const WORDS = [
       "pitha", // traditional Bengali sweet/snack
       "misti", // sweet
@@ -258,7 +252,6 @@
       "ganga"  // river Ganga
     ];
 
-    // 🌅 Daily word logic:
     const startDate = new Date("2025-01-01");
     const today = new Date();
     const dayIndex = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
